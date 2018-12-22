@@ -1,5 +1,6 @@
 from PIL import Image
 import PIL.ImageOps
+import time
 
 listOfImages = []
 errorLimit = 20
@@ -17,6 +18,14 @@ for i in range(100):
         else:
             errorLimit -= 1
             continue
+
+# some feedback for the user when running it
+print("Found " + str(len(listOfImages)) + " images")
+if len(listOfImages) == 0:
+    print("Creating collages failed")
+else:
+    print("creating " + str(len(listOfImages)//8+1) + " collages")
+time.sleep(2)
 
 
 # This loop creates the correct number of 'templates'
