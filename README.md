@@ -8,5 +8,5 @@ It inverts, resizes, and then combines them. Allowing an easier time filling out
 
 ## WARNINGS:
 + Will only combine up to 100 images
-+ Running the program will overwite any exisiting collages in the same directory
++ Running the program will overwrite any existing collages in the same directory
 + Only reliable for images downloaded directly from the O-Scope
