@@ -13,7 +13,6 @@ for i in range(100):
         errorLimit = 20
     except FileNotFoundError:
         if errorLimit <= 0:
-            # print(listOfImages)
             break
         else:
             errorLimit -= 1
@@ -44,15 +43,15 @@ for i in listOfImages:
     if (index % 2) == 0:
         templateImage = listOfTemplates[indexDiv8].paste(invImage, (
             gapW, gapH * (indexM8Div2+1) + (indexM8Div2*iHeight)))
-        print(gapH + (((index % 8) // 2) * iHeight))
     if (index % 2) == 1:
         templateImage = listOfTemplates[indexDiv8].paste(invImage, (
             2 * gapW + iWidth, gapH * (indexM8Div2+1) + (indexM8Div2*iHeight)))
-    if ((index % 8) == 0) and (index != 0):
+    if (((index + 1) % 8) == 0) and (index != 0):
         listOfTemplates[indexDiv8].save("collage_" + str(indexDiv8+1) + ".png",
                                         dpi=(300, 300))
 
 # this if statement is for if there is a non-multiple of 8 images in the folder
-if len(listOfImages) % 8 != 0:
-    listOfTemplates[len(listOfImages) // 8].save("collage_" + str(1) + ".png",
-                                                 dpi=(300, 300))
+length = len(listOfImages)
+if length % 8 != 0:
+    listOfTemplates[length // 8].save("collage_" + str(length // 8+1) + ".png",
+                                      dpi=(300, 300))
