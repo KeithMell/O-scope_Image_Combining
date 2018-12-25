@@ -25,7 +25,7 @@ if len(listOfImages) == 0:
     print("Creating collages failed")
 else:
     print("creating " + str(len(listOfImages)//8+1) + " collages")
-time.sleep(2)
+time.sleep(1)
 
 
 # This loop creates the correct number of 'templates'
