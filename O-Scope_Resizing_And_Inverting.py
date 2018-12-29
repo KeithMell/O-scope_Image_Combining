@@ -20,40 +20,34 @@ def create_image_list():
     return starting_list
 
 
-def create_buttons(orig_image_list, b_list):
-    var_list = [0]*len(orig_image_list)
-    for i in orig_image_list:
-        index = orig_image_list.index(i)
-        temp_button = tk.Checkbutton(root, text=i, variable=var_list[index])
-        temp_button.pack()
-        b_list.append(temp_button)
-    return b_list, var_list
+class OScope:
+    def __init__(self, master):
+        self.master = master
+        master.title("O-Scope GUI")
 
+        self.header = tk.Label(master, text="Please select the desired images")
+        self.header.pack()
 
-def create_collages():
-    print("testing")
-    print("")
+        self.var = tk.IntVar()
+        self.ints = tk.IntVar
+        c = tk.Checkbutton(master, text="scope_1",
+                           variable=self.var, command=self.test)
+        c.pack()
+
+        self.button = tk.Button(master, text="Create collages", command=self.collage)
+        self.button.pack()
+
+    def test(self):
+        print("the variable is ", self.var.get())
+
+    def collage(self):
+        self.create_collages(new_list)
+
+    def create_collages(self, new_list):
+        templates = imageEditing.create_templates(new_list)
+        imageEditing.create_collages(new_list, templates)
 
 
 root = tk.Tk()
-
-one = tk.Label(root, text="Please select the desired images")
-one.pack()
-
-button_list = create_buttons(create_image_list(), [])[0]
-variables = create_buttons(create_image_list(), [])[1]
-
-collage_b = tk.Button(root, text="Create collages", command=create_collages)
-collage_b.pack()
-
+my_gui = OScope(root)
 root.mainloop()
-
-
-
-
-
-
-
-
-
-
