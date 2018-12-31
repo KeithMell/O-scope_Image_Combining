@@ -4,11 +4,14 @@ import PIL.ImageOps
 
 def create_templates(list_of_images):
     # This loop creates the correct number of 'templates'
+    if not list_of_images:
+        return 0
     list_templates = []
     for i in range(len(list_of_images)):
         if i % 8 == 0:
             t_blank = Image.new("RGB", (850*3, 1100*3), color=(255, 255, 255))
             list_templates.append(t_blank)
+    return list_templates
 
 
 def create_collages(list_of_images, list_templates):
