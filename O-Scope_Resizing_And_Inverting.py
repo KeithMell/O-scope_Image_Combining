@@ -2,11 +2,11 @@ import tkinter as tk
 import imageEditing
 
 
-def create_image_list():
-    starting_list = []
+# This Function creates a dictionary with all of the images in the folder
+# With their values to be tkinter variables
+def create_image_dict():
     starting_dict = {}
     error_limit = 20
-    # This loop creates a list of all of the images in the folder
     for i in range(100):
         try:
             open("scope_" + str(i) + ".png", 'r')
@@ -39,12 +39,11 @@ class OScope:
             c = tk.Checkbutton(master, text=x, onvalue=1, offvalue=0,
                                variable=i_list[x])
             c.pack()
+        self.image_dict = i_list
 
         self.button = tk.Button(master,
                                 text="Create collages", command=self.collage)
         self.button.pack()
-
-        self.image_dict = i_list
 
     def collage(self):
         i_dict = self.image_dict
@@ -52,16 +51,14 @@ class OScope:
         for key, value in i_dict.items():
             if value.get() == 1:
                 new_list.append(key)
-            print(value.get())
-        print(new_list)
         templates = imageEditing.create_templates(new_list)
         if templates:
             imageEditing.create_collages(new_list, templates)
-            print(new_list, "creating Collages")
+            self.master.quit()
         else:
             print("No images found")
 
 root = tk.Tk()
-orig_list = create_image_list()
-my_gui = OScope(root, orig_list)
+orig_dict = create_image_dict()
+my_gui = OScope(root, orig_dict)
 root.mainloop()
