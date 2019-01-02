@@ -19,7 +19,6 @@ def create_image_dict():
             else:
                 error_limit -= 1
                 continue
-    print(starting_dict)
     return starting_dict
 
 
@@ -27,6 +26,7 @@ class OScope:
     image_dict = None
 
     def __init__(self, master, i_list):
+
         self.master = master
         master.title("O-Scope GUI")
 
@@ -57,6 +57,7 @@ class OScope:
             self.master.quit()
         else:
             print("No images found")
+
 
 root = tk.Tk()
 orig_dict = create_image_dict()
