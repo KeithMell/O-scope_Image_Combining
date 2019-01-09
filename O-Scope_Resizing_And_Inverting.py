@@ -38,7 +38,7 @@ for i in range(len(listOfImages)):
 
 # this loop does the inverting, resizing, and saving of the images.
 gapW = 43 * 3
-gapH = 40 * 3
+gapH = 40 * 1
 iWidth = 350*3
 iHeight = 218*3
 
